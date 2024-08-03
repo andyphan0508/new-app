@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "186882555823",
+    "project_id": "logindatabase-ea211",
+    "storage_bucket": "logindatabase-ea211.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186882555823:android:afdd7efddebbf6ddaaf95a",
+        "android_client_info": {
+          "package_name": "myapp.login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-wxwRh1XyldDWZyxhDmkQIAcBa4yWGHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
