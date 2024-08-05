@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Pressable, TouchableOpacity, StyleProp} from 'react-native';
-import {Button} from 'react-native-paper';
+import Button from 'react-native-paper';
 import color from '../../themes/color';
 
 const ButtonComponent: React.FC<any> = ({
@@ -14,9 +14,9 @@ const ButtonComponent: React.FC<any> = ({
 }) => {
   const styles = createStyle();
   return (
-    <Button onPress={onPress} style={buttonStyle || styles.button} textColor={color.colors.light.white}>
-      {label || 'Button'}
-    </Button>
+    <TouchableOpacity onPress={onPress} style={buttonStyle || styles.button}>
+      <Text>{label || 'Button'}</Text>
+    </TouchableOpacity>
   );
 };
 
@@ -26,8 +26,8 @@ const createStyle = () => {
       backgroundColor: color.colors.light.primary500,
       borderRadius: 4,
       justifyContent: 'center',
-      width: '100%',
-      marginTop: 8,
+      margin: 8,
+      padding: 8,
       flexDirection: 'row',
     },
   });

@@ -6,61 +6,25 @@
  */
 
 import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 import type {PropsWithChildren} from 'react';
 import {SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import Home from './src/screens/Home';
+import Home from './src/screens/Login';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import AppScreen from './src/navigations';
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+// Initialize Native Stack
+const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
   const backgroundStyle = {
     backgroundColor: 'white',
     flex: 1,
   };
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <Home />
-    </SafeAreaView>
-  );
+  return <AppScreen />;
 }
 
 const styles = StyleSheet.create({
