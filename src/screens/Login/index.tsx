@@ -4,7 +4,9 @@ import {View, Text, StyleSheet, Alert} from 'react-native';
 import Input from '../../components/TextInput';
 import {useTheme} from '../../themes';
 import ButtonComponent from '../../components/Button';
+
 import * as localAPI from '../../api/local/credentials';
+import Toast from '../../components/Toast';
 
 const Home = () => {
   const styles = createStyle();
@@ -13,15 +15,23 @@ const Home = () => {
     name: '',
     password: '',
   });
-  const [data, setData] = React.useState<any>([]);
-  console.log('data', data);
+  const [error, setError] = React.useState<any>(false);
+
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  const [users, setUsers] = React.useState<any>([]);
 
   const onPress = async () => {
     try {
       const data = await localAPI.getCredentials();
-      setData(data);
+      setUsers(data);
+      if (!users?.find?.((i: any) => i.username === state.name && i.password === state.password)) {
+        setError(true);
+      }
+      setError(false);
     } catch (error) {
       console.log(error);
+      setError(true);
     }
   };
 
@@ -30,6 +40,14 @@ const Home = () => {
   };
   const onChangePassword = (value: string) => {
     setState({...state, password: value});
+  };
+
+  const onShowToast = () => {
+    setIsVisible(true);
+  };
+
+  const onClose = () => {
+    setIsVisible(false);
   };
 
   return (
@@ -43,7 +61,7 @@ const Home = () => {
         value={state.name}
         onChangeText={onChangeText}
       />
-      {/* <Text>{data?.find((i: any) => i.username !== state.name) ? 'Error' : ''}</Text> */}
+      <Text>{error ? 'Error' : ''}</Text>
       <Input
         styles={styles.container}
         containerStyle={styles.containerStyle}
@@ -55,8 +73,9 @@ const Home = () => {
       />
 
       <View style={{alignItems: 'flex-start'}}>
-        <ButtonComponent label="Press Me" onPress={onPress} />
+        <ButtonComponent label="Press Me" onPress={onShowToast} />
       </View>
+      <Toast isVisible={isVisible} onClose={onClose} />
     </View>
   );
 };

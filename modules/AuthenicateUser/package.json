@@ -1,0 +1,13 @@
+{
+  "name": "user-authenticate",
+  "version": "0.0.0",
+  "description": "Check user",
+  "main": "src/index",
+  "author": " <> ()",
+  "license": "UNLICENSED",
+  "homepage": "#readme",
+  "create-react-native-library": {
+    "type": "library",
+    "version": "0.40.0"
+  }
+}

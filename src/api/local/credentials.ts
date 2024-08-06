@@ -16,8 +16,6 @@ const credentialFile = AsyncStorage.setItem(CREDENTIALS_KEY, JSON.stringify(init
 
 export async function getCredentials() {
   const credentials = await AsyncStorage.getItem(CREDENTIALS_KEY);
-  //   const users = JSON.parse(credentials);
-  console.log('credentials', credentials);
   return credentials;
 }
 
