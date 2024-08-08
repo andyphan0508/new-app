@@ -8,7 +8,17 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import type {PropsWithChildren} from 'react';
-import {SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View} from 'react-native';
+import {
+  Button,
+  NativeModules,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  useColorScheme,
+  View,
+} from 'react-native';
 
 import Home from './src/screens/Login';
 
@@ -24,7 +34,19 @@ function App(): React.JSX.Element {
     flex: 1,
   };
 
-  return <AppScreen />;
+  return (
+    <View>
+      {/* <AppScreen /> */}
+      <Button
+        title={'Press Me'}
+        onPress={() => {
+          NativeModules === null
+            ? NativeModules?.CalendarModule?.createCalendarEvent('hello', 'world')
+            : console.log('NativeModules not found');
+        }}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
